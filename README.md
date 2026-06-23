@@ -70,6 +70,90 @@ It clicks every reveal button for you, expands each contact's full profile, capt
 
 ---
 
+## Before You Begin — Prerequisites
+
+> ⚠️ **FreeReach does not work on its own. It is a helper tool that works on top of your RocketReach account.**
+
+Before using this extension, make sure you have completed all of the following:
+
+### 1. You must have a RocketReach account
+
+FreeReach automates the process of clicking the **"Get Contact Info"** button on RocketReach. This button reveals contact details that are locked behind your RocketReach subscription. Without a paid or trial RocketReach account, the button will not work and no data will be revealed.
+
+👉 If you do not have one, sign up at [rocketreach.co](https://rocketreach.co)
+
+### 2. You must be logged in to RocketReach in Chrome
+
+FreeReach works on your active Chrome tab. You must be signed in to your RocketReach account in the same browser where the extension is installed.
+
+- Go to [rocketreach.co](https://rocketreach.co)
+- Sign in with your credentials
+- You should see your dashboard or search results — not a login wall
+
+### 3. You must run a search first
+
+FreeReach only works on **RocketReach search result pages**. It cannot work on the homepage, dashboard, or individual profile pages.
+
+Here is how to get to the right page:
+
+1. Go to [rocketreach.co](https://rocketreach.co)
+2. Use the **People Search** to search for the type of leads you want  
+   *(e.g., "Software Engineer in Bangalore" or "Marketing Manager in the US")*
+3. Wait for the results to load — you will see a list of contact cards with masked emails like `j***@acme.com`
+4. **Now open FreeReach** — the extension icon in your toolbar becomes active
+
+> The URL of a valid search results page looks like:  
+> `https://rocketreach.co/search?start=1&pageSize=50&keyword=...`
+
+### 4. One-time Chrome download setting
+
+To ensure files download silently without any popups:
+
+- Open Chrome → **Settings** → **Downloads**
+- Turn **OFF** the toggle: *"Ask where to save each file before downloading"*
+
+This only needs to be done once.
+
+---
+
+## How FreeReach Works — Step by Step
+
+Understanding the flow will help you use the extension correctly.
+
+```
+Your RocketReach Search Results Page
+           │
+           ▼
+  ┌─────────────────────────────────────────────┐
+  │  Contact cards are shown with masked data   │
+  │  Emails: j***@acme.com  Phone: +1 415-***  │
+  └─────────────────────────────────────────────┘
+           │
+           ▼  FreeReach clicks "Get Contact Info" on each card
+  ┌─────────────────────────────────────────────┐
+  │  Real data is revealed using your account   │
+  │  Emails: jane@acme.com  Phone: +1 415-555   │
+  └─────────────────────────────────────────────┘
+           │
+           ▼  FreeReach clicks "View More" on each card
+  ┌─────────────────────────────────────────────┐
+  │  Full profile expands inline                │
+  │  + Work history  + Education  + Skills      │
+  └─────────────────────────────────────────────┘
+           │
+           ▼  FreeReach extracts and saves the data
+  ┌─────────────────────────────────────────────┐
+  │  page-0001.json saved to Downloads folder   │
+  │  Buffer cleared. Moving to page 2...        │
+  └─────────────────────────────────────────────┘
+           │
+           ▼  Repeats automatically across all pages
+```
+
+**Every contact is processed one at a time** — reveal → expand → save — before moving to the next. This ensures no data is missed even if the page re-renders.
+
+---
+
 ## Installation
 
 ### Option A — Install from ZIP (Recommended)
@@ -92,33 +176,47 @@ Then follow steps 3–6 above.
 
 ## How to Use
 
-> **One-time Chrome setting:** Chrome Settings → Downloads → turn **OFF** "Ask where to save each file before downloading". This ensures files save silently with no prompts.
+> **Make sure you have completed all steps in [Before You Begin](#before-you-begin--prerequisites) first.**
 
-### Auto Mode (Recommended)
+### Auto Mode — Full Automation (Recommended)
 
-1. Open any RocketReach search results page
-2. Click the **FreeReach** icon in your toolbar
-3. Click **Automate**
-4. Walk away — FreeReach collects every contact on every page and saves files to:
+Use this when you want to collect leads across many pages without doing anything manually.
+
+1. Log in to [rocketreach.co](https://rocketreach.co) in Chrome
+2. Run a **People Search** and wait for the results to load
+3. Click the **FreeReach** icon in your Chrome toolbar
+4. Click **Automate**
+5. Walk away — FreeReach will:
+   - Reveal every contact on the page
+   - Expand each full profile
+   - Save the page as a JSON file
+   - Navigate to the next page automatically
+   - Repeat until all pages are done
+
+Files are saved silently to your Downloads folder:
 
 ```
 Downloads/
   freereach-leads/
-    page-0001.json   ← 50 contacts
-    page-0002.json   ← 50 contacts
-    page-0003.json   ← 50 contacts
+    page-0001.json   ← up to 50 contacts
+    page-0002.json   ← up to 50 contacts
+    page-0003.json   ← up to 50 contacts
     ...
 ```
 
-5. Click **Stop** whenever you want. The current page saves before stopping.
+6. Click **Stop** at any time — the current page saves before stopping
 
-### Manual Mode (Step by Step)
+### Manual Mode — One Page at a Time
+
+Use this when you only need leads from a single page.
 
 | Step | Button | What it does |
 |---|---|---|
-| 1 | **Get Contact Info** | Reveals all masked emails & phones on the current page |
-| 2 | **Extract Data** | Scrapes all visible contact data into the buffer |
-| 3 | **Download JSON** | Downloads the current page's leads as a JSON file |
+| 1 | **Get Contact Info** | Clicks every reveal button on the current page — unmasks all emails & phones |
+| 2 | **Extract Data** | Scrapes all visible contact data from the page into a buffer |
+| 3 | **Download JSON** | Downloads the current page buffer as a single JSON file |
+
+> Run Step 1 first, wait for all contacts to reveal, then run Step 2.
 
 ---
 
@@ -177,9 +275,13 @@ Free_Reach/
 
 ## Requirements
 
-- Google Chrome (version 88 or later)
-- An active RocketReach account with search access
-- Developer mode enabled in `chrome://extensions`
+| Requirement | Details |
+|---|---|
+| **Browser** | Google Chrome version 88 or later |
+| **RocketReach Account** | A paid or trial account — you must be logged in |
+| **Active Search** | A People Search must be open and showing results |
+| **Developer mode** | Enabled in `chrome://extensions` (for unpacked install) |
+| **Chrome Download setting** | "Ask where to save" must be turned **OFF** for silent downloads |
 
 ---
 
