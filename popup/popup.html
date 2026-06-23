@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>FreeReach</title>
+</head>
+<body>
+  <header>
+    <span class="logo">🚀</span>
+    <h1>FreeReach</h1>
+    <span id="version" class="version"></span>
+  </header>
+
+  <div id="notOnSite" class="banner hidden">
+    Open a RocketReach <strong>search results</strong> page to use this extension.
+  </div>
+
+  <main id="controls">
+    <p class="hint">Run steps in order, or hit <strong>Automate</strong> to collect all pages automatically.</p>
+
+    <div class="steps">
+      <button id="btnReveal" class="step">
+        <span class="num">1</span>
+        <span class="label">Get Contact Info<small>Reveal all on this page</small></span>
+      </button>
+      <button id="btnExtract" class="step">
+        <span class="num">2</span>
+        <span class="label">Extract Data<small>Scrape this page into the table</small></span>
+      </button>
+      <button id="btnAutomate" class="step primary">
+        <span class="num">3</span>
+        <span class="label">Automate<small>Reveal + extract, every page</small></span>
+      </button>
+    </div>
+
+    <button id="btnStop" class="stop hidden">■ Stop</button>
+
+    <div class="status">
+      <div class="status-row"><span>Status</span><strong id="stStatus">idle</strong></div>
+      <div class="status-row"><span>Page</span><strong id="stPage">–</strong></div>
+      <div class="status-row"><span>Revealed (page)</span><strong id="stRevealed">–</strong></div>
+      <div class="status-row"><span>Files saved</span><strong id="stFiles">0</strong></div>
+      <div class="status-row big"><span>Leads collected</span><strong id="stLeads">0</strong></div>
+    </div>
+
+    <div class="exports">
+      <button id="btnDownload">⬇ Download JSON</button>
+      <button id="btnCopy">⧉ Copy JSON</button>
+      <button id="btnClear" class="ghost">Clear</button>
+    </div>
+    <div id="toast" class="toast hidden"></div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
