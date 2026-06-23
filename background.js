@@ -18,12 +18,21 @@ function doDownload(filename, records, sendResponse) {
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg && msg.type === 'savePage') {
+    if (!Array.isArray(msg.records)) {
+      sendResponse({ ok: false, error: 'records missing or not an array' });
+      return false;
+    }
     const num = String(msg.pageNum || 0).padStart(4, '0');
     doDownload(`freereach-leads/page-${num}.json`, msg.records, sendResponse);
     return true;
   }
   if (msg && msg.type === 'downloadBuffer') {
-    doDownload(msg.filename || 'rocketreach-leads.json', msg.records, sendResponse);
+    if (!Array.isArray(msg.records)) {
+      sendResponse({ ok: false, error: 'records missing or not an array' });
+      return false;
+    }
+    doDownload(msg.filename || 'freereach-leads.json', msg.records, sendResponse);
     return true;
   }
+  return false; // unknown message type — close channel cleanly
 });

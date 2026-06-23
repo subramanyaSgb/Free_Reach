@@ -16,6 +16,7 @@ async function onRocketReach() {
 
 async function send(type) {
   const tab = await activeTab();
+  if (!tab) return null;
   try {
     return await chrome.tabs.sendMessage(tab.id, { type });
   } catch (e) {
@@ -36,14 +37,18 @@ function toast(msg, isError) {
 }
 
 // ---- live status -----------------------------------------------------------
+let _lastToastedError = null;
+
 async function render() {
   const { rr_progress = {}, rr_total = 0, rr_files = 0, rr_running = false } =
     await chrome.storage.local.get(['rr_progress', 'rr_total', 'rr_files', 'rr_running']);
 
   $('stStatus').textContent = rr_progress.status || 'idle';
-  if (rr_progress.status === 'error' && rr_progress.error) {
+  if (rr_progress.status === 'error' && rr_progress.error && rr_progress.error !== _lastToastedError) {
+    _lastToastedError = rr_progress.error;
     toast('Error: ' + rr_progress.error, true);
   }
+  if (rr_progress.status !== 'error') _lastToastedError = null; // reset when error clears
   $('stPage').textContent = rr_progress.page ?? '–';
   $('stRevealed').textContent =
     rr_progress.totalCards != null

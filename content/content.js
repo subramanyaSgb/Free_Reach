@@ -7,8 +7,8 @@
  * All selectors live in CONFIG so they're easy to tweak if RocketReach changes its markup.
  */
 (() => {
-  if (window.__rrLiteLoaded) return;
-  window.__rrLiteLoaded = true;
+  if (window.__freeReachLoaded) return;
+  window.__freeReachLoaded = true;
 
   const CONFIG = {
     cardSelector: '[data-profile-card-id]',
