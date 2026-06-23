@@ -12,9 +12,6 @@ Reveal contacts · Extract everything · Auto-download across all pages
 [![License](https://img.shields.io/badge/license-MIT-10b981?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Chrome-f59e0b?style=flat-square)](https://www.google.com/chrome/)
 
-<a href="https://www.buymeacoffee.com/subramanyasgb" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" />
-</a>
 
 </div>
 
@@ -303,12 +300,6 @@ If this tool saved you hours of manual work, consider supporting future developm
 
 FreeReach is completely **free and open-source**. If it saved you hours of manual work, a small contribution keeps the project alive.
 
-### Buy Me a Coffee
-
-<a href="https://www.buymeacoffee.com/subramanyasgb" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60" />
-</a>
-
 ### Pay via UPI (India)
 
 ```
@@ -339,6 +330,6 @@ MIT — free to use, modify, and distribute.
 
 Built with ❤️ by a solo developer to save you thousands of manual clicks
 
-**[⬇ Download ZIP](https://github.com/subramanyaSgb/Free_Reach/archive/refs/heads/main.zip)** &nbsp;·&nbsp; **[🐛 Report an Issue](https://github.com/subramanyaSgb/Free_Reach/issues)** &nbsp;·&nbsp; **[☕ Buy Me a Coffee](https://www.buymeacoffee.com/subramanyasgb)**
+**[⬇ Download ZIP](https://github.com/subramanyaSgb/Free_Reach/archive/refs/heads/main.zip)** &nbsp;·&nbsp; **[🐛 Report an Issue](https://github.com/subramanyaSgb/Free_Reach/issues)** &nbsp;·&nbsp; **[☕ Support via UPI — 9008059668@upi](#-support-this-project)**
 
 </div>
