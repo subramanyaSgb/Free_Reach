@@ -19,7 +19,7 @@ async function send(type) {
   try {
     return await chrome.tabs.sendMessage(tab.id, { type });
   } catch (e) {
-    toast(‘Couldn\’t reach the page. Reload the RocketReach tab and try again.’, true);
+    toast("Couldn’t reach the page. Reload the RocketReach tab and try again.", true);
     return null;
   }
 }
